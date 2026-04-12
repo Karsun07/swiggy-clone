@@ -20,7 +20,7 @@ export default function Restaurants(){
     return (
         <>
         <Mind mindData={mindData}/>
-        <Restaurantoptions restData={restData}/>
+        {/* <Restaurantoptions restData={restData}/> */}
         </>
     )
 }
