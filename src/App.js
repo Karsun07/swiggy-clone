@@ -4,6 +4,7 @@ import Header from "./components/header";
 import Foodoptions from "./components/foodoptions";
 import Groceryoptions from "./components/Groceryoptions";
 import Dineoptions from "./components/Dineoptions";
+import Restaurants from "./components/Restaurants";
 function App(){
     return (
         <>
@@ -11,6 +12,7 @@ function App(){
         <Foodoptions/>
         <Groceryoptions/>
         <Dineoptions/>
+        <Restaurants/>
         </>
         
     )

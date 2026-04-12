@@ -1,4 +1,4 @@
-export default function Restrocard({ value }) {
+export default function Dinecard({ value }) {
   return (
     <div className="max-w-sm flex-none relative">
       
