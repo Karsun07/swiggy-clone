@@ -1,18 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Header from "./components/header";
-import Foodoptions from "./components/foodoptions";
-import Groceryoptions from "./components/Groceryoptions";
-import Dineoptions from "./components/Dineoptions";
+import Header from "./components/Header";
+import Home from "./components/Home";
 import Restaurants from "./components/Restaurants";
+import { BrowserRouter,Routes,Route } from "react-router";
 function App(){
     return (
         <>
-        <Header/>
-        <Foodoptions/>
-        <Groceryoptions/>
-        <Dineoptions/>
-        <Restaurants/>
+        <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Home></Home>}></Route>
+            <Route path="/restaurants" element={<Restaurants></Restaurants>}></Route>
+        </Routes>
+        </BrowserRouter>
         </>
         
     )

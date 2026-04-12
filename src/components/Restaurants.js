@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-
+import Mind from "./Mind";
+import Restaurantoptions from "./Restaurantoptions";
 export default function Restaurants(){
     const [restData,setRestData]=useState([]);
     const [mindData,setMindData]=useState([]);
@@ -14,6 +15,12 @@ export default function Restaurants(){
         }
         fetchData();
     },[])
-    console.log(restData);
-    console.log(mindData);
+    // console.log(restData);
+    // console.log(mindData);
+    return (
+        <>
+        <Mind mindData={mindData}/>
+        <Restaurantoptions restData={restData}/>
+        </>
+    )
 }
