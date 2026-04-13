@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Mind from "./Mind";
 import Restaurantoptions from "./Restaurantoptions";
+import Restaurantonline from "./Restaurantonline";
 export default function Restaurants(){
     const [restData,setRestData]=useState([]);
     const [mindData,setMindData]=useState([]);
@@ -17,8 +18,9 @@ export default function Restaurants(){
         }
         fetchData();
     },[])
-    // console.log(restData);
-    // console.log(mindData);
+    console.log(restData);
+    console.log(mindData);
+    console.log(onlineData);
     return (
         <div className="bg-[#FFFFFF]">
         <Mind mindData={mindData}/>
