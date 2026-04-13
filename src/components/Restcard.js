@@ -10,7 +10,7 @@ export default function Restcard({ value }) {
           className="w-full h-[200px] object-cover rounded-2xl"
           src={
             "https://media-assets.swiggy.com/swiggy/image/upload/" +
-            value.info?.cloudinaryImageId
+            info?.cloudinaryImageId
           }
           alt={info?.name}
         />
@@ -32,21 +32,21 @@ export default function Restcard({ value }) {
         {/* Rating + Time */}
         <div className="flex items-center gap-2 text-sm mt-1">
           <span className="bg-green-600 text-white text-xs px-2 py-[2px] rounded-md">
-            ⭐ {value?.info?.avgRating}
+            ⭐ {info?.avgRating}
           </span>
           <span className="font-medium">
-            {value?.info?.sla?.slaString}
+            {info?.sla?.slaString}
           </span>
         </div>
 
         {/* Cuisines */}
         <p className="text-gray-600 text-sm truncate">
-          {value?.info?.cuisines?.join(", ")}
+          {info?.cuisines?.join(", ")}
         </p>
 
         {/* Location */}
         <p className="text-gray-500 text-sm">
-          {value?.info?.areaName}
+          {info?.areaName}
         </p>
       </div>
     </div>
