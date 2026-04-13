@@ -4,6 +4,7 @@ import Restaurantoptions from "./Restaurantoptions";
 export default function Restaurants(){
     const [restData,setRestData]=useState([]);
     const [mindData,setMindData]=useState([]);
+    const [onlineData,setOnlineData]=useState([]);
     useEffect(()=>{
         async function fetchData() {
             const proxyServer="https://cors-anywhere.herokuapp.com/";
@@ -12,6 +13,7 @@ export default function Restaurants(){
             const data=await response.json();
             setRestData(data.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);   
             setMindData(data.data.cards[0].card.card.imageGridCards.info);
+            setOnlineData(data.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
         }
         fetchData();
     },[])
@@ -21,6 +23,7 @@ export default function Restaurants(){
         <div className="bg-[#FFFFFF]">
         <Mind mindData={mindData}/>
         <Restaurantoptions restData={restData}/>
+        <Restaurantonline onlineData={onlineData}/>
         </div>
     )
 }
