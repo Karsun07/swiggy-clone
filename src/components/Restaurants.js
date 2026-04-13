@@ -18,9 +18,9 @@ export default function Restaurants(){
     // console.log(restData);
     // console.log(mindData);
     return (
-        <>
+        <div className="bg-[#FFFFFF]">
         <Mind mindData={mindData}/>
-        {/* <Restaurantoptions restData={restData}/> */}
-        </>
+        <Restaurantoptions restData={restData}/>
+        </div>
     )
 }
