@@ -1,7 +1,9 @@
+import {Link} from "react-router";
 export default function Restcard({ value }) {
   const info = value?.info;
 
   return (
+    <Link to={"/city/delhi/"+value?.info?.id}>
     <div className="w-[320px] flex-shrink-0 cursor-pointer">
       
       {/* Image Section */}
@@ -50,5 +52,9 @@ export default function Restcard({ value }) {
         </p>
       </div>
     </div>
+
+
+
+    </Link>
   );
 }

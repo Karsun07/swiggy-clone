@@ -1,53 +1,55 @@
+import { Link } from "react-router";
+
 export default function Onlinecard({ value }) {
   const info = value?.info;
 
   return (
-    <div className="cursor-pointer transform transition duration-200 hover:scale-95 ease-in">
-      
-      {/* Image */}
-      <div className="relative">
-        <img  
-          className="w-full h-[180px] object-cover rounded-2xl"
-          src={
-            "https://media-assets.swiggy.com/swiggy/image/upload/" +
-            info?.cloudinaryImageId
-          }
-          alt={info?.name}
-        />
+    <Link to={"/city/delhi/"+value?.info?.id}>
+      <div className="cursor-pointer transform transition duration-200 hover:scale-95 ease-in">
 
-        {/* Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-2xl"></div>
+        {/* Image */}
+        <div className="relative">
+          <img
+            className="w-full h-[180px] object-cover rounded-2xl"
+            src={
+              "https://media-assets.swiggy.com/swiggy/image/upload/" +
+              info?.cloudinaryImageId
+            }
+            alt={info?.name}
+          />
 
-        {/* Offer */}
-        <h2 className="absolute bottom-2 left-3 text-white font-bold text-lg">
-          {info?.aggregatedDiscountInfoV3?.header}
-        </h2>
-      </div>
+          {/* Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-2xl"></div>
 
-      {/* Info */}
-      <div className="mt-3">
-        <h2 className="font-bold text-lg">{info?.name}</h2>
-
-        {/* Rating + Time */}
-        <div className="flex items-center gap-2 text-sm mt-1">
-          <span className="bg-green-600 text-white text-xs px-2 py-[2px] rounded-md">
-            ⭐ {info?.avgRating}
-          </span>
-          <span className="font-medium">
-            {info?.sla?.slaString}
-          </span>
+          {/* Offer */}
+          <h2 className="absolute bottom-2 left-3 text-white font-bold text-lg">
+            {info?.aggregatedDiscountInfoV3?.header}
+          </h2>
         </div>
 
-        {/* Cuisines */}
-        <p className="text-gray-600 text-sm truncate">
-          {info?.cuisines?.join(", ")}
-        </p>
+        {/* Info */}
+        <div className="mt-3">
+          <h2 className="font-bold text-lg">{info?.name}</h2>
 
-        {/* Area */}
-        <p className="text-gray-500 text-sm">
-          {info?.areaName}
-        </p>
+          <div className="flex items-center gap-2 text-sm mt-1">
+            <span className="bg-green-600 text-white text-xs px-2 py-[2px] rounded-md">
+              ⭐ {info?.avgRating}
+            </span>
+            <span className="font-medium">
+              {info?.sla?.slaString}
+            </span>
+          </div>
+
+          <p className="text-gray-600 text-sm truncate">
+            {info?.cuisines?.join(", ")}
+          </p>
+
+          <p className="text-gray-500 text-sm">
+            {info?.areaName}
+          </p>
+        </div>
+
       </div>
-    </div>
+    </Link>
   );
 }
