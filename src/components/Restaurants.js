@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Mind from "./Mind";
 import Restaurantoptions from "./Restaurantoptions";
 import Restaurantonline from "./Restaurantonline";
+import Shimmer from "./Shimmer";
 export default function Restaurants(){
     const [restData,setRestData]=useState([]);
     const [mindData,setMindData]=useState([]);
@@ -18,9 +19,12 @@ export default function Restaurants(){
         }
         fetchData();
     },[])
-    console.log(restData);
-    console.log(mindData);
-    console.log(onlineData);
+    // console.log(restData);
+    // console.log(mindData);
+    // console.log(onlineData);
+    if(restData.length==0 || mindData.length==0 || onlineData.length==0){
+        return <Shimmer/>
+    }
     return (
         <div className="bg-[#FFFFFF]">
         <Mind mindData={mindData}/>
