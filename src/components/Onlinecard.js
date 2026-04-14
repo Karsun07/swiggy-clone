@@ -2,11 +2,11 @@ export default function Onlinecard({ value }) {
   const info = value?.info;
 
   return (
-    <div className="cursor-pointer">
+    <div className="cursor-pointer transform transition duration-200 hover:scale-95 ease-in">
       
       {/* Image */}
       <div className="relative">
-        <img
+        <img  
           className="w-full h-[180px] object-cover rounded-2xl"
           src={
             "https://media-assets.swiggy.com/swiggy/image/upload/" +
