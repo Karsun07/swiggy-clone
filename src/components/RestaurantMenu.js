@@ -1,29 +1,42 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-
-
 export default function RestaurantMenu(){
    
-    let {id} = useParams();
-    console.log(id);
+    const { id } = useParams();
+    const [RestData, setRestData] = useState([]);
 
-    const [RestData, setRestData] = useState(null);
+    useEffect(() => {
 
-    useEffect(()=>{
-    
         async function fetchData() {
-           
-           const proxyServer = "https://cors-anywhere.herokuapp.com/"
-           const swiggyAPI = `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7040592&lng=77.10249019999999&restaurantId=${id}`;
-           const response = await fetch(proxyServer+swiggyAPI);
-           const data = await response.json();
-           setRestData(data);
-        }
-   
-        fetchData();
-       },[])
+            try {
+                const proxyServer = "https://cors-anywhere.herokuapp.com/";
+                const swiggyAPI = `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7040592&lng=77.10249019999999&restaurantId=${id}`;
 
-       console.log(RestData);
+                const response = await fetch(proxyServer + swiggyAPI);
+                const data = await response.json();
+
+                const tempData = data?.data?.cards
+                    ?.find((item) => item?.groupedCard)
+                    ?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+
+                if (!tempData) return;
+
+                const filterData = tempData.filter(
+                    (items) => items?.card?.card && 'title' in items.card.card
+                );
+
+                setRestData(filterData);
+
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        fetchData();
+
+    }, []);
+
+    console.log(RestData);
 
     return(
         <>
