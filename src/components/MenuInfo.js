@@ -9,6 +9,8 @@ export default function MenuInfo({ menu }) {
         ? "https://media-assets.swiggy.com/swiggy/image/upload/" + menu.imageId
         : null;
     
+
+ 
     return (
         <div className="flex justify-between py-6 border-b border-gray-300">
 
