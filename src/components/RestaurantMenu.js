@@ -39,12 +39,19 @@ export default function RestaurantMenu(){
 
     console.log(RestData);
 
-    return(
-        <div >
-            {
-            RestData.map((menu)=> <MenuCard key={menu?.card?.card?.title} menuItems={menu?.card?.card}/>)
-            }
+    return (
+    <div className="bg-gray-100 min-h-screen py-6">
+        <div className="max-w-[800px] mx-auto bg-white px-6 py-4 rounded-lg shadow">
+
+            {RestData.map((menu) => (
+                <MenuCard
+                    key={menu?.card?.card?.title}
+                    menuItems={menu?.card?.card}
+                />
+            ))}
+
         </div>
-    )
+    </div>
+);
 
 }

@@ -8,16 +8,14 @@ export default function MenuInfo({ menu }) {
     const imageUrl = menu?.imageId
         ? "https://media-assets.swiggy.com/swiggy/image/upload/" + menu.imageId
         : null;
-    
 
- 
     return (
-        <div className="flex justify-between py-6 border-b border-gray-300">
+        <div className="flex justify-between py-6 border-b border-gray-200">
 
-            {/* LEFT */}
-            <div className="w-[70%]">
+            
+            <div className="w-[70%] pr-4">
 
-                <p className="font-semibold text-lg">
+                <p className="font-semibold text-base text-gray-900">
                     {menu?.name}
                 </p>
 
@@ -26,28 +24,28 @@ export default function MenuInfo({ menu }) {
                 </p>
 
                 {rating && (
-                    <p className="text-green-600 text-sm mt-1">
+                    <p className="text-green-600 text-xs mt-1 font-medium">
                         ⭐ {rating} ({ratingCount})
                     </p>
                 )}
 
-                <p className="text-gray-500 text-sm mt-2">
+                <p className="text-gray-500 text-sm mt-2 line-clamp-2">
                     {menu?.description}
                 </p>
             </div>
 
-            {/* RIGHT */}
+           
             <div className="w-[30%] flex flex-col items-center relative">
 
                 {imageUrl && (
                     <img
-                        className="w-36 h-28 object-cover rounded-lg"
+                        className="w-32 h-24 object-cover rounded-lg shadow-sm"
                         src={imageUrl}
                         alt={menu?.name}
                     />
                 )}
 
-                <button className="bg-black text-white px-4 py-1 rounded absolute bottom-[-10px]">
+                <button className="bg-white text-green-600 border border-gray-300 px-6 py-1 rounded-md font-semibold absolute bottom-[-10px] shadow">
                     ADD
                 </button>
             </div>
