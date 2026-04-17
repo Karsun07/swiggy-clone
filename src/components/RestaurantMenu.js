@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import MenuCard from "./MenuCard";
 export default function RestaurantMenu(){
    
     const { id } = useParams();
@@ -39,10 +40,11 @@ export default function RestaurantMenu(){
     console.log(RestData);
 
     return(
-        <>
-        <h1>Hello Coder Army</h1>
-        <h2>{id}</h2>
-        </>
+        <div >
+            {
+            RestData.map((menu)=> <MenuCard key={menu?.card?.card?.title} menuItems={menu?.card?.card}/>)
+            }
+        </div>
     )
 
 }

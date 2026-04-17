@@ -1,6 +1,6 @@
 resto1=>https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7040592&lng=77.10249019999999&restaurantId=555307&catalog_qa=undefined&submitAction=ENTER
 
-restro2=>https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.7040592&lng=77.10249019999999&restaurantId=279863&catalog_qa=undefined&submitAction=ENTER
+restro2=>   
 <!-- they differ by restaurant id if i get restro id i can fetch there data in 1 go -->
 
 we can find them all at=>
