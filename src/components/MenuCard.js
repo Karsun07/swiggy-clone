@@ -1,7 +1,7 @@
 import { useState } from "react";
 import MenuInfo from "./MenuInfo";
 
-export default function MenuCard({ menuItems }) {
+export default function MenuCard({ menuItems ,pref,setPref}) {
   const [isOpen, setIsOpen] = useState(true);
 
   if ("categories" in menuItems) {
@@ -63,7 +63,8 @@ export default function MenuCard({ menuItems }) {
         {menuItems.itemCards.map((menu) => (
           <MenuInfo
             key={menu?.card?.info?.id}
-            menu={menu?.card?.info}
+            menu={menu?.card?.info} 
+            pref={pref} 
           />
         ))}
       </div>

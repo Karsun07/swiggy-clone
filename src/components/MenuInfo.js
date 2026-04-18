@@ -1,4 +1,4 @@
-export default function MenuInfo({ menu }) {
+export default function MenuInfo({ menu,pref }) {
 
     const price = (menu?.price || menu?.defaultPrice) / 100;
 
@@ -8,8 +8,15 @@ export default function MenuInfo({ menu }) {
     const imageUrl = menu?.imageId
         ? "https://media-assets.swiggy.com/swiggy/image/upload/" + menu.imageId
         : null;
-
+    if(menu.isVeg==1 && pref==='Non-Veg'){
+        return null;
+    } 
+    else if(menu.isVeg==0 && pref==='Veg'){
+        return null;
+    }
+    
     return (
+        
         <div className="flex justify-between py-6 border-b border-gray-200">
 
             
@@ -46,4 +53,5 @@ export default function MenuInfo({ menu }) {
 
         </div>
     );
+
 }
