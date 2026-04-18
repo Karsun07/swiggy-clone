@@ -4,23 +4,13 @@
     if ("categories" in menuItems) {
         return (
             <div className="mb-6">
-
-               
-                <p className="text-xl font-bold mb-3">
-                    {menuItems.title}
-                </p>
+                <p className="text-xl font-bold mb-3">{menuItems.title}</p>
 
                 <div className="space-y-4">
-                    {menuItems?.categories?.map((items) => (
-                        <MenuCard
-                            key={items?.title}
-                            menuItems={items}
-                        />
+                    {menuItems?.categories?.map((items) => (<MenuCard key={items?.title} menuItems={items}/>
                     ))}
                 </div>
-
-               
-                <div className="h-2 bg-gray-100 mt-4"></div>
+               <div className="h-2 bg-gray-100 mt-4"></div>
 
             </div>
         );
