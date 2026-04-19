@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import MenuCard from "./MenuCard";
-
+import {Link} from "react-router";
 export default function RestaurantMenu(){
 
     const { id } = useParams();
@@ -38,10 +38,13 @@ export default function RestaurantMenu(){
     }, []);
 
     return (
+        
         <div className="bg-gray-100 min-h-screen py-6">
+            <Link to={`city/delhi/${id}/search`}>
+            <button className="w-full text-center py-4 rounded-4xl bg-gray-200 text-2xl">Search for Dishes</button>
+            </Link>
             <div className="max-w-[800px] mx-auto bg-white px-6 py-4 rounded-lg shadow">
 
-                {/* FILTER BUTTONS */}
                 <div className="flex gap-4 justify-center mb-6">
                     <button
                         className={`px-6 py-2 rounded-full border text-sm font-semibold 

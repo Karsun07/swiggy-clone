@@ -5,7 +5,7 @@ export default function MenuCard({ menuItems, pref }) {
 
     const [isOpen, setIsOpen] = useState(true);
 
-    // ✅ Handle nested categories
+  
     if ("categories" in menuItems) {
         return (
             <div className="mb-6 bg-white rounded-xl shadow-sm p-4 border border-gray-100">
@@ -29,7 +29,7 @@ export default function MenuCard({ menuItems, pref }) {
         );
     }
 
-    // ❌ Closed accordion
+  
     if (!isOpen) {
         return (
             <div className="mb-4 bg-white rounded-xl shadow-sm p-4 border">
@@ -41,7 +41,7 @@ export default function MenuCard({ menuItems, pref }) {
         );
     }
 
-    // ✅ Filtering logic
+  
     let items = menuItems?.itemCards || [];
 
     if (pref === "veg") {
@@ -52,7 +52,7 @@ export default function MenuCard({ menuItems, pref }) {
         items = items.filter(val => !("isVeg" in val?.card?.info));
     }
 
-    // ✅ Hide empty sections
+
     if (items.length === 0) return null;
 
     return (

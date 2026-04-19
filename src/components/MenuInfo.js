@@ -12,7 +12,7 @@ export default function MenuInfo({ menu }) {
     return (
         <div className="flex justify-between py-6 border-b border-gray-200">
 
-            {/* LEFT */}
+          
             <div className="w-[70%] pr-4">
 
                 <p className="font-semibold text-base text-gray-900">
@@ -34,7 +34,7 @@ export default function MenuInfo({ menu }) {
                 </p>
             </div>
 
-            {/* RIGHT */}
+         
             <div className="w-[30%] flex flex-col items-center relative">
 
                 {imageUrl && (
