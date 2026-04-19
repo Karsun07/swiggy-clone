@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import MenuCard from "./MenuCard";
+
 export default function RestaurantMenu(){
-   
+
     const { id } = useParams();
     const [RestData, setRestData] = useState([]);
+    const [pref, setPref] = useState(null);
 
     useEffect(() => {
-
         async function fetchData() {
             try {
                 const proxyServer = "https://cors-anywhere.herokuapp.com/";
@@ -34,23 +35,40 @@ export default function RestaurantMenu(){
         }
 
         fetchData();
-
     }, []);
 
-    // console.log(RestData);
-    const [pref,setPref]=useState(null);
-
     return (
-    <div className="bg-gray-100 min-h-screen py-6">
-        <div className="max-w-[800px] mx-auto bg-white px-6 py-4 rounded-lg shadow">
-            <button className="bg-green-500" onClick={()=>setPref(pref===null?"Veg":null)}>Veg</button>
-            <button className="bg-red-400" onClick={()=>setPref(pref===null?"Non-Veg":null)}>Non-Veg</button>
-            {RestData.map((menu) => (
-                <MenuCard key={menu?.card?.card?.title} menuItems={menu?.card?.card} pref={pref} />
-            ))}
+        <div className="bg-gray-100 min-h-screen py-6">
+            <div className="max-w-[800px] mx-auto bg-white px-6 py-4 rounded-lg shadow">
 
+                {/* FILTER BUTTONS */}
+                <div className="flex gap-4 justify-center mb-6">
+                    <button
+                        className={`px-6 py-2 rounded-full border text-sm font-semibold 
+                        ${pref==="veg" ? "bg-green-600 text-white" : "bg-gray-200"}`}
+                        onClick={()=>setPref(pref==='veg'?null:'veg')}
+                    >
+                        Veg
+                    </button>
+
+                    <button
+                        className={`px-6 py-2 rounded-full border text-sm font-semibold 
+                        ${pref==="nonveg" ? "bg-red-500 text-white" : "bg-gray-200"}`}
+                        onClick={()=>setPref(pref==='nonveg'?null:'nonveg')}
+                    >
+                        Non Veg
+                    </button>
+                </div>
+
+                {RestData.map((menu) => (
+                    <MenuCard
+                        key={menu?.card?.card?.title}
+                        menuItems={menu?.card?.card}
+                        pref={pref}
+                    />
+                ))}
+
+            </div>
         </div>
-    </div>
-);
-
+    );
 }
