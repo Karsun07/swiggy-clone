@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { AddItems, IncrementItems, DecrementItems } from "../stored/cartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function MenuInfo({ menu }) {
   if (!menu) return null;
@@ -14,19 +14,21 @@ export default function MenuInfo({ menu }) {
   const imageUrl = menu?.imageId
     ? `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${menu.imageId}`
     : null;
-  const [count, setCount] = useState(0);
+  const items= useSelector((state)=>state.cartslice.items);
+  const element=items.find(item=>item.id===menu.id);
+  const count=element?element.quantity:0;
    
   function handleAddItems(){
-    setCount(1);
+   
     dispatch(AddItems(menu))
   }
    
   function handleIncrementItems(){
-    setCount(count+1);
+    
     dispatch(IncrementItems(menu));
   }
   function handleDecrementItems(){
-    setCount(count-1);
+    
     dispatch(DecrementItems(menu));
   }
 
