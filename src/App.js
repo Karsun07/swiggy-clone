@@ -5,15 +5,18 @@ import Restaurants from "./components/Restaurants";
 import { BrowserRouter,Routes,Route } from "react-router";
 import RestaurantMenu from "./components/RestaurantMenu"; 
 import SearchFood from "./components/SearchFood";
+import SecondaryHome from "./components/SecondaryHome";
 function App(){
     return (
         <>
         <BrowserRouter>
         <Routes>
             <Route path="/" element={<Home></Home>}></Route>
+            <Route element={<SecondaryHome></SecondaryHome>}>
             <Route path="/restaurants" element={<Restaurants></Restaurants>}></Route>
             <Route path="/city/delhi/:id" element={<RestaurantMenu/>}></Route>
-             <Route path="/city/delhi/:id/search" element={<SearchFood></SearchFood>}></Route>
+            <Route path="/city/delhi/:id/search" element={<SearchFood></SearchFood>}></Route>
+            </Route>
         </Routes>
         </BrowserRouter>
         </>
