@@ -1,15 +1,35 @@
 
 import { useState } from "react";
+import { AddItems, IncrementItems, DecrementItems } from "../stored/cartSlice";
+import { useDispatch } from "react-redux";
+
 export default function MenuInfo({ menu }) {
   if (!menu) return null;
-
+   
+  const dispatch=useDispatch();
+  
   const price = menu?.price || menu?.defaultPrice;
   const formattedPrice = price ? `₹${(price / 100).toFixed(0)}` : null;
   const isVeg = "isVeg" in menu;
   const imageUrl = menu?.imageId
     ? `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/${menu.imageId}`
     : null;
-  const [count,setCount]=useState(0);
+  const [count, setCount] = useState(0);
+   
+  function handleAddItems(){
+    setCount(1);
+    dispatch(AddItems(menu))
+  }
+   
+  function handleIncrementItems(){
+    setCount(count+1);
+    dispatch(IncrementItems(menu));
+  }
+  function handleDecrementItems(){
+    setCount(count-1);
+    dispatch(DecrementItems(menu));
+  }
+
   return (
     <div className="flex gap-4 px-4 py-5 bg-white hover:bg-[#fafafa] transition-colors">
 
@@ -86,62 +106,62 @@ export default function MenuInfo({ menu }) {
             {/* ADD button over image */}
             <div className="absolute -bottom-3 left-1/2 -translate-x-1/2">
               {count === 0 ? (
-  <button
-    className="bg-white text-[#fc8019] border border-[#d4d5d9] text-[13px] font-extrabold px-5 py-1 rounded-lg shadow-md hover:shadow-lg tracking-widest transition-shadow"
-    onClick={() => setCount(1)}
-  >
-    ADD
-  </button>
-) : (
-  <div className="flex items-center bg-[#fc8019] rounded-lg overflow-hidden min-w-[90px]">
-    <button
-      className="text-white text-lg font-bold w-8 h-8 hover:bg-black/10 transition-colors"
-      onClick={() => setCount(count - 1)}
-    >
-      −
-    </button>
-    <span className="flex-1 text-center text-white text-[13px] font-extrabold">
-      {count}
-    </span>
-    <button
-      className="text-white text-lg font-bold w-8 h-8 hover:bg-black/10 transition-colors"
-      onClick={() => setCount(count + 1)}
-    >
-      +
-    </button>
-  </div>
-)}
+                <button
+                  className="bg-white text-[#fc8019] border border-[#d4d5d9] text-[13px] font-extrabold px-5 py-1 rounded-lg shadow-md hover:shadow-lg tracking-widest transition-shadow"
+                  onClick={() => handleAddItems()}
+                >
+                  ADD
+                </button>
+              ) : (
+                <div className="flex items-center bg-[#fc8019] rounded-lg overflow-hidden min-w-[90px]">
+                  <button
+                    className="text-white text-lg font-bold w-8 h-8 hover:bg-black/10 transition-colors"
+                    onClick={() => handleDecrementItems()}
+                  >
+                    −
+                  </button>
+                  <span className="flex-1 text-center text-white text-[13px] font-extrabold">
+                    {count}
+                  </span>
+                  <button
+                    className="text-white text-lg font-bold w-8 h-8 hover:bg-black/10 transition-colors"
+                    onClick={() => handleIncrementItems()}
+                  >
+                    +
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         ) : (
           /* No image: standalone ADD button */
           <div className="flex items-end justify-center h-full pb-1">
             {count === 0 ? (
-  <button
-    className="bg-white text-[#fc8019] border border-[#d4d5d9] text-[13px] font-extrabold px-5 py-1 rounded-lg shadow-md hover:shadow-lg tracking-widest transition-shadow"
-    onClick={() => setCount(1)}
-  >
-    ADD
-  </button>
-) : (
-  <div className="flex items-center bg-[#fc8019] rounded-lg overflow-hidden min-w-[90px]">
-    <button
-      className="text-white text-lg font-bold w-8 h-8 hover:bg-black/10 transition-colors"
-      onClick={() => setCount(count - 1)}
-    >
-      −
-    </button>
-    <span className="flex-1 text-center text-white text-[13px] font-extrabold">
-      {count}
-    </span>
-    <button
-      className="text-white text-lg font-bold w-8 h-8 hover:bg-black/10 transition-colors"
-      onClick={() => setCount(count + 1)}
-    >
-      +
-    </button>
-  </div>
-)}
+              <button
+                className="bg-white text-[#fc8019] border border-[#d4d5d9] text-[13px] font-extrabold px-5 py-1 rounded-lg shadow-md hover:shadow-lg tracking-widest transition-shadow"
+                onClick={() => handleAddItems()}
+              >
+                ADD
+              </button>
+            ) : (
+              <div className="flex items-center bg-[#fc8019] rounded-lg overflow-hidden min-w-[90px]">
+                <button
+                  className="text-white text-lg font-bold w-8 h-8 hover:bg-black/10 transition-colors"
+                  onClick={() => handleDecrementItems()}
+                >
+                  −
+                </button>
+                <span className="flex-1 text-center text-white text-[13px] font-extrabold">
+                  {count}
+                </span>
+                <button
+                  className="text-white text-lg font-bold w-8 h-8 hover:bg-black/10 transition-colors"
+                  onClick={() => handleIncrementItems()}
+                >
+                  +
+                </button>
+              </div>
+            )}
           </div>
         )}
       </div>
