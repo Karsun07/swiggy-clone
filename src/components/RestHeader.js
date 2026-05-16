@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 
 export default function RestHeader(){
-   const counter=useSelector(state=>state.cartslice.items);
+   const counter=useSelector(state=>state.cartslice.count);
     
     
     return (
@@ -11,7 +11,7 @@ export default function RestHeader(){
             </div>
             <div>
                
-                <p>Cart {`(${counter.length})`}</p>
+                <p>Cart {`(${counter})`}</p>
              
             </div>
         </div>
